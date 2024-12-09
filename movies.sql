@@ -41,7 +41,7 @@ CREATE TABLE users (
    WatchDate DATE,
    CompletionPercentage INT NOT NULL  
     );
-----------------------faire des update dans les tableaux / link des tableaux------------------------
+----------------------faire des update dans les tableaux + link des tableaux------------------------
 ALTER TABLE users 
 ADD COLUMN subscriptionID INT;
 ALTER TABLE users 
@@ -69,4 +69,12 @@ ALTER TABLE watchhistory
 ADD CONSTRAINT fk_movieID
 FOREIGN KEY (movieID)
 REFERENCES movie(movieID);
+
+
+ALTER TABLE watchhistory
+ADD COLUMN UserID INT ; 
+ALTER TABLE watchhistory
+ADD CONSTRAINT fk_userID
+FOREIGN KEY (UserID)
+REFERENCES users(UserID);
 
