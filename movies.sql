@@ -296,3 +296,10 @@ VALUES
 -- INNER JOIN users
 -- ON subscription.subscriptionID=users.subscriptionID
 -- group by subscriptionType;
+
+
+-------------------------------- Sous-requête (Bonus): Trouver les films ayant une note moyenne supérieure à 4.-------------------------------------------
+-- SELECT title
+-- FROM movie
+--  WHERE movieID
+--  IN (SELECT review.UserID FROM review WHERE review.Rating > 4);
