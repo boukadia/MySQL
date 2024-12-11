@@ -259,19 +259,40 @@ VALUES
 
 --  update users set subscriptionID=2 where subscriptionID=1;
 
--- ------------------------------Afficher les abonnements : Joindre les utilisateurs à leurs types d'abonnements.---------------------------
+-- --------------------------- _ 4 Afficher les abonnements : Joindre les utilisateurs à leurs types d'abonnements.---------------------------
 
 -- select users.lastName,users.firstName,subscription.SubscriptionType
 -- FROM users
 -- INNER JOIN subscription
 -- ON subscription.subscriptionID=users.subscriptionID;
 
----------------------------- Filtrer les visionnages : Trouver tous les utilisateurs ayant terminé de regarder un film.------------------------
+------------------------------- _5 Filtrer les visionnages : Trouver tous les utilisateurs ayant terminé de regarder un film.------------------------
 -- SELECT users.FirstName,users.LastName,watchhistory.CompletionPercentage
 -- FROM users
 -- INNER JOIN watchhistory
 -- ON users.UserID=watchhistory.userID
 -- AND watchhistory.CompletionPercentage=100;
 
--- ----------------------------Trier et limiter : Afficher les 5 films les plus longs, triés par durée.
--- SELECT title  FROM  movie ORDER BY Duration DESC LIMIT 5;
+-- ----------------------------  _6 Trier et limiter : Afficher les 5 films les plus longs, triés par durée.
+-- SELECT title  FROM  movie
+--  ORDER BY Duration
+--  DESC LIMIT 5;
+
+-------------------------------  _7 Agrégation : Calculer le pourcentage moyen de complétion pour chaque film.------------------------------------------
+
+-- select title ,AVG(CompletionPercentage)
+-- as total
+-- from movie
+-- INNER JOIN watchhistory
+-- ON watchhistory.movieID=movie.MovieID
+-- group by title;
+
+
+----------------------- ------   _8 Group By : Grouper les utilisateurs par type d’abonnement et compter le nombre total d’utilisateurs par groupe.
+
+-- select subscriptionType ,count(UserID)
+-- as total
+-- from subscription
+-- INNER JOIN users
+-- ON subscription.subscriptionID=users.subscriptionID
+-- group by subscriptionType;
